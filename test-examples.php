@@ -63,6 +63,18 @@ echo "TERMINÉ";
 ?>
 </p>
 
+<h3 style="text-decoration:underline">Répartition et nombre d'enregistrements par état :</h3>
+<p style="text-align:justify">
+<?php
+$stmt = $conn->query("SELECT country_code, COUNT(country_code) FROM `data` GROUP BY country_code ORDER BY COUNT(country_code) ASC");
+while ($result = $stmt->fetch())
+{
+  echo "<span>" . $result['country_code'] . "&nbsp;(" . $result['COUNT(country_code)'] . ")&nbsp;" . "| </span>";
+}
+echo "TERMINÉ";
+?>
+</p>
+
 
 
 <?php
