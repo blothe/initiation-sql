@@ -1,8 +1,8 @@
 <?php
 $servername = "localhost";
-$username = "root";
-$password = "";
-$dbname = "myDB";
+$username = "username";
+$password = "password";
+$dbname = "dbname";
 
 try {
   $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -27,5 +27,6 @@ catch(PDOException $e)
   echo $sql . "<br>" . $e->getMessage();
 }
 
+// close the connection
 $conn = null;
 ?>
