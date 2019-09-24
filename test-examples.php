@@ -97,6 +97,18 @@ echo "*** ENTRÉE SUPPRIMÉE ***";
 ?>
 </p>
 
+<h3 style="text-decoration:underline">Répartition par genre :</h3>
+<p style="text-align:justify">
+<?php
+$stmt = $conn->query("SELECT gender, COUNT(gender) FROM `data` GROUP BY gender ORDER BY COUNT(gender) ASC");
+while ($result = $stmt->fetch())
+{
+  echo "<span>" . $result['gender'] . "&nbsp;(" . $result['COUNT(gender)'] . ")&nbsp;" . "| </span>";
+}
+echo "TERMINÉ";
+?>
+</p>
+
 
 
 <?php
