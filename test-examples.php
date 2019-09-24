@@ -51,6 +51,18 @@ echo "TERMINÉ";
 ?>
 </p>
 
+<h3 style="text-decoration:underline">Liste des adresses e-mail contenant le mot "Google" :</h3>
+<p style="text-align:justify">
+<?php
+$stmt = $conn->query("SELECT email FROM `data` WHERE email REGEXP 'google'");
+while ($result = $stmt->fetch())
+{
+  echo "<span>" . $result['email'] . "&nbsp;| </span>";
+}
+echo "TERMINÉ";
+?>
+</p>
+
 
 
 <?php
