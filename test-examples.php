@@ -75,6 +75,28 @@ echo "TERMINÉ";
 ?>
 </p>
 
+<h3 style="text-decoration:underline">Insertion d'une nouvelle entrée, màj e-mail, puis suppression :</h3>
+<p style="text-align:justify">
+<?php
+$stmt = $conn->query("INSERT INTO `data` (first_name, last_name, email, gender, ip_address, birth_date, zip_code, avatar_url, state_code, country_code) VALUES ('Sam', 'Bell', 'sam.bell@moon.net', 'Male', '', '', '', 'https://raw.githubusercontent.com/baptl/cv/master/img/sam_gerty.jpg', '', '')");
+$stmt = $conn->query("SELECT first_name, last_name, email FROM `data` WHERE email = 'sam.bell@moon.net'");
+while ($result = $stmt->fetch())
+{
+  echo "<span>*** NOUVELLE ENTRÉE *** " . $result['first_name'] . "&nbsp;" . $result['last_name'] . "&nbsp;:&nbsp;" . $result['email'] . " | </span>";
+}
+echo "TERMINÉ ";
+$stmt = $conn->query("UPDATE `data` SET email = 'sam.bell@earth.net' WHERE email = 'sam.bell@moon.net'");
+$stmt = $conn->query("SELECT first_name, last_name, email FROM `data` WHERE email = 'sam.bell@earth.net'");
+while ($result = $stmt->fetch())
+{
+  echo "<span>*** MISE À JOUR DE L'EMAIL *** " . $result['first_name'] . "&nbsp;" . $result['last_name'] . "&nbsp;:&nbsp;" . $result['email'] . " | </span>";
+}
+echo "TERMINÉ ";
+$stmt = $conn->query("DELETE FROM `data` WHERE email = 'sam.bell@earth.net'");
+echo "*** ENTRÉE SUPPRIMÉE ***";
+?>
+</p>
+
 
 
 <?php
